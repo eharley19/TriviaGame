@@ -1,0 +1,68 @@
+/* body, html  {
+    background-image: url(../images/music\ wallpaper.jpg);
+    height: 100%;
+}; */
+
+
+
+
+
+#main  {
+    height: 500px;
+    width: 750px;
+    margin: auto;
+    background-color: skyblue;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    
+};
+    
+.header {
+    color: white;
+}
+
+
+body {
+    background-image: url(../images/music\ wallpaper.jpg);
+    background-color: blueviolet;
+}
+
+.font-effect-anaglyph {
+    color: rgb(128, 58, 134);
+    font-family: 'Monoton', cursive;
+    font-size: 55px;
+    text-align: center;
+}
+
+
+
+.clickable:hover {
+    background-color: greenyellow;
+}
+
+.clickable:active {
+    background-color: lightsalmon;
+}
+
+#start  {
+    text-align: center;
+}
+
+#timer  {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+#question {
+    text-align: left;
+    padding-left: 5px; 
+    margin-bottom: 25px;
+}
+
+#answers {
+    text-align: left;
+    padding-left: 10px;
+}
