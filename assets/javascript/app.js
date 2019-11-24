@@ -95,11 +95,13 @@ $(function () {
                    
         }
 
-        if (question == questionOne) {
-            if 
+        // if (question == questionOne) {
+        //     $(".clickable").click(function() {
+        //         if (
+        //     }
+
             
-            
-        } 
+        // } 
          
 
 
