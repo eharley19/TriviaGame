@@ -13,26 +13,32 @@ $(function () {
     });
 
     
+
+    
     var questionOne = {
         
            questionText: "Which band covered a Bob Dylan song for the soundtrack of the 2009 movie, Watchmen?", 
-           ansArray: ["My Chemical Romance", "Black Veil Brides", "Taking Back Sunday", "Fall Out Boy"]    
+           ansArray: ["My Chemical Romance", "Black Veil Brides", "Taking Back Sunday", "Fall Out Boy"],
+           rightAnswer: "My Chemical Romance"    
       
-    };
+    }
 
     var questionTwo = {
           questionText: "Which album by The Red Hot Chili Peppers came out first chronologically?",
-          ansArray: ["Mother's Milk", "One Hot Minute", "Californication", "Blood Sugar Sex Magik"]
+          ansArray: ["Mother's Milk", "One Hot Minute", "Californication", "Blood Sugar Sex Magik"],
+          rightAnswer: "Mother's Milk"
        
-    };
+    }
 
     var questionThree = {
 
         questionText: "Which artist covered the Radiohead classic Creep at Coachella in 2008 and later caused controversy after asking all copies to be removed from the internet?",
-        ansArray: ["Prince", "Kelly Clarkson", "Macy Gray", "The Pretenders"] 
+        ansArray: ["Prince", "Kelly Clarkson", "Macy Gray", "The Pretenders"], 
+        rightAnswer: "Prince"
 
 
-    };
+    }
+    
 
     var timer1;
     var timeToAnswer = 21;
@@ -92,18 +98,24 @@ $(function () {
         for (i = 0; i < choices.length; i++) {
           var choice =  $("<p>").addClass("clickable").attr("id", i).text(choices[i]);
           $("#answers").append(choice);
-                   
+          
         }
+        checkForRightAnswer();
+        
+    }
 
-        // if (question == questionOne) {
-        //     $(".clickable").click(function() {
-        //         if (
-        //     }
+    function checkForRightAnswer() {
+        var answer = $(".clickable").click( function(e) {
+            var userSelection = e.target.innerHTML;
 
-            
-        // } 
-         
-
+            if (userSelection === questionOne.rightAnswer) { 
+                correctAnswer();
+            } else {
+                wrongAnswer();
+            }
+        });
 
     }
+
 });
+
