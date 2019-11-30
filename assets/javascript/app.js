@@ -1,11 +1,20 @@
+
+    var timer1;
+    var timeToAnswer = 21;
+
+    var timer2;
+    var timeToDisplay = 5; 
+
 $(function () {
+
+    var currentQuestion; 
 
     $("#start").click(function() {
 
-    
+        currentQuestion = questions.shift()
         clear();
         questionTimer();
-        asker(questionOne);
+        asker(currentQuestion);
 
 
         
@@ -15,34 +24,30 @@ $(function () {
     
 
     
-    var questionOne = {
-        
+    var questions = [
+        {
            questionText: "Which band covered a Bob Dylan song for the soundtrack of the 2009 movie, Watchmen?", 
            ansArray: ["My Chemical Romance", "Black Veil Brides", "Taking Back Sunday", "Fall Out Boy"],
            rightAnswer: "My Chemical Romance"    
       
-    }
+        },
 
-    var questionTwo = {
+        {
           questionText: "Which album by The Red Hot Chili Peppers came out first chronologically?",
           ansArray: ["Mother's Milk", "One Hot Minute", "Californication", "Blood Sugar Sex Magik"],
           rightAnswer: "Mother's Milk"
        
-    }
+        },
 
-    var questionThree = {
-
+        {
         questionText: "Which artist covered the Radiohead classic Creep at Coachella in 2008 and later caused controversy after asking all copies to be removed from the internet?",
         ansArray: ["Prince", "Kelly Clarkson", "Macy Gray", "The Pretenders"], 
         rightAnswer: "Prince"
 
+        }
+  
+   ]
 
-    }
-    
-
-    var timer1;
-    var timeToAnswer = 21;
-    var timeToDisplay = 15; 
 
     function questionTimer() {
         clearInterval(timer1);
@@ -58,20 +63,38 @@ $(function () {
             stop();
 
         }
-         
+    
+    }
 
+    function displayTimer() {
+        console.log("hello");
+        clearInterval(timer2);
+        timer2 = setInterval(disTimer,1000);
+    }
+
+    function disTimer() {
+        console.log("hello2");
+        timeToDisplay--;
+        if (timeToDisplay === 0) {
+            currentQuestion = questions.shift()
+            clearInterval(timer2);
+            $("#wrongRight").empty(); 
+            asker(currentQuestion);
+            
+        }
     }
 
     function correctAnswer() {
-        clearInterval();
+        clearInterval(timer1);
         clear();
-        $("#gameArea").text("Correct!");
+        $("#wrongRight").text("Correct!");
+
     }
 
     function wrongAnswer() {
-        clearInterval();
+        clearInterval(timer1);
         clear();
-        $("#gameArea").text("Sorry! That's wrong.");
+        $("#wrongRight").text("Sorry! That's wrong.");
     }
 
     
@@ -80,7 +103,7 @@ $(function () {
         $(".clickable").empty();
         $("#timer").empty();
         $("#question").empty();
-
+        
     }
 
     function stop() {
@@ -104,14 +127,17 @@ $(function () {
         
     }
 
+
     function checkForRightAnswer() {
         var answer = $(".clickable").click( function(e) {
             var userSelection = e.target.innerHTML;
 
-            if (userSelection === questionOne.rightAnswer) { 
+            if (userSelection === currentQuestion.rightAnswer) { 
                 correctAnswer();
+                displayTimer();
             } else {
                 wrongAnswer();
+                displayTimer();
             }
         });
 
