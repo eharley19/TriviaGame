@@ -63,6 +63,7 @@ $(function () {
         $("#timer").html(displayTime);
         if (timeToAnswer === 0) {
             stop();
+            displayTimer();
 
         }
     
