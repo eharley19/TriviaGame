@@ -3,11 +3,15 @@
     var timeToAnswer = 21;
 
     var timer2;
-    var timeToDisplay = 3; 
+    var timeToDisplay = 3;
+    
+    var right = 0;
+    var wrong = 0;
+    
 
 $(function () {
 
-    var currentQuestion; 
+    var currentQuestion = 
 
     $("#start").click(function() {
 
@@ -70,14 +74,14 @@ $(function () {
     }
 
     function displayTimer() {
-        console.log("hello");
+        
         clearInterval(timer2);
         timeToDisplay = 3;
         timer2 = setInterval(disTimer,1000);
     }
 
     function disTimer() {
-        console.log("hello2");
+        
         timeToDisplay--;
         if (timeToDisplay === 0) {
             currentQuestion = questions.shift()
@@ -121,18 +125,24 @@ $(function () {
     }
 
     function asker(question) {
+        if (question === undefined) {
+            endGame();
+        } else {
+            var displayQuestion = $("<p>").text(question.questionText);
+            $("#question").html(displayQuestion);
+            var choices = question.ansArray;
+            for (i = 0; i < choices.length; i++) {
+            var choice =  $("<p>").addClass("clickable").text(choices[i]);
+            $("#answers").append(choice);
 
-        var displayQuestion = $("<p>").text(question.questionText);
-        $("#question").html(displayQuestion);
-        var choices = question.ansArray;
-        for (i = 0; i < choices.length; i++) {
-          var choice =  $("<p>").addClass("clickable").attr("id", i).text(choices[i]);
-          $("#answers").append(choice);
+            }
 
           
         }
         questionTimer();
         checkForRightAnswer();
+        
+        
         
     }
 
@@ -142,9 +152,11 @@ $(function () {
             var userSelection = e.target.innerHTML;
 
             if (userSelection === currentQuestion.rightAnswer) { 
+                right++;
                 correctAnswer();
                 displayTimer();
             } else {
+                wrong++;
                 wrongAnswer();
                 displayTimer();
             }
@@ -152,5 +164,13 @@ $(function () {
 
     }
 
+    function endGame() {
+        if (!alert(`Game Over! Right: ${right} Wrong: ${wrong}`)) {
+            
+            window.location.reload();
+        };
+    }
+
+    
 });
 
