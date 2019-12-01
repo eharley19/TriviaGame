@@ -31,23 +31,35 @@ $(function () {
     var questions = [
         {
            questionText: "Which band covered a Bob Dylan song for the soundtrack of the 2009 movie, Watchmen?", 
-           ansArray: ["My Chemical Romance", "Black Veil Brides", "Taking Back Sunday", "Fall Out Boy"],
+           ansArray: ["Black Veil Brides", "My Chemical Romance", "Taking Back Sunday", "Fall Out Boy"],
            rightAnswer: "My Chemical Romance"    
       
         },
 
         {
-          questionText: "Which album by The Red Hot Chili Peppers came out first chronologically?",
-          ansArray: ["Mother's Milk", "One Hot Minute", "Californication", "Blood Sugar Sex Magik"],
+          questionText: "Which album by The Red Hot Chili Peppers came out chronologically first?",
+          ansArray: ["One Hot Minute", "Californication", "Blood Sugar Sex Magik", "Mother's Milk"],
           rightAnswer: "Mother's Milk"
        
         },
 
         {
-            questionText: "Which artist covered the Radiohead classic Creep at Coachella in 2008 and later caused controversy after asking all copies to be removed from the internet?",
+            questionText: "Which artist covered the Radiohead classic Creep at Coachella in 2008 and later sparked controversy after asking all copies to be removed from the internet?",
             ansArray: ["Prince", "Kelly Clarkson", "Macy Gray", "The Pretenders"], 
             rightAnswer: "Prince"
 
+        },
+
+        {
+            questionText: "Which band did NOT originate in Kentucky?",
+            ansArray: ["Emarosa", "Morning Teleportation", "The Black Keys", "Cage the Elephant"],
+            rightAnswer: "The Black Keys"
+        },
+
+        {
+            questionText: "Twenty One Pilots covered this Elvis Presley classic in 2012.",
+            ansArray: ["Burning Love", "Guitar Man", "Can't Help Falling In Love", "A Little Less Conversation"],
+            rightAnswer: "Can't Help Falling In Love"
         }
   
    ]
